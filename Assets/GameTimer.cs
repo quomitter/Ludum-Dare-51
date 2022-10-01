@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameTimer : MonoBehaviour
 {
+    public Animator animRopeGuy;
     public Sprite[] gameNumbers; 
     public SpriteRenderer spriteRenderer;
     public AudioSource audioSource; 
@@ -11,10 +12,12 @@ public class GameTimer : MonoBehaviour
 
     public float gameTimer;
     public int gameTimerWorker; 
+    public float speedMultiplyer;
 
     // Start is called before the first frame update
     void Start()
     {
+        speedMultiplyer = 1; 
         gameTimer = 10.999f; 
         audioSource = GetComponent<AudioSource>(); 
     }
@@ -22,10 +25,12 @@ public class GameTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameTimer -= Time.deltaTime; 
+        gameTimer -= Time.deltaTime;
         if(gameTimer < 0){
             gameTimer = 10.999f;
             AudioSource.PlayClipAtPoint(timerReset,new Vector3(-7f,3f,0f));
+            speedMultiplyer = speedMultiplyer + 0.1f; 
+            animRopeGuy.SetFloat("Speed", speedMultiplyer); 
         }
              
         gameTimerWorker = Mathf.RoundToInt(gameTimer);
