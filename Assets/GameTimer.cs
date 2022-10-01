@@ -29,7 +29,7 @@ public class GameTimer : MonoBehaviour
         if(gameTimer < 0){
             gameTimer = 10.999f;
             AudioSource.PlayClipAtPoint(timerReset,new Vector3(-7f,3f,0f));
-            speedMultiplyer = speedMultiplyer + 0.1f; 
+            speedMultiplyer = speedMultiplyer + 0.2f; 
             animRopeGuy.SetFloat("Speed", speedMultiplyer); 
         }
              
