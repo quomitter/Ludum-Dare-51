@@ -6,6 +6,8 @@ public class ManController : MonoBehaviour
 {
     public Animator manAnim;
     public bool isJumping;  
+    public AudioSource audioSource;
+    public AudioClip jumpSound;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class ManController : MonoBehaviour
         if(Input.GetButtonDown("Jump")){
             manAnim.SetBool("isJumping", true);
             isJumping = true; 
+            AudioSource.PlayClipAtPoint(jumpSound,new Vector3(-7f,3f,0f));
         }
         if(Input.GetButtonUp("Jump")){
             manAnim.SetBool("isJumping", false);
