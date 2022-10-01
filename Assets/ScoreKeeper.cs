@@ -9,10 +9,13 @@ public class ScoreKeeper : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text highScoreText;
 
+    public int highScoreKeeper;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        highScoreKeeper = 0; 
         inTheAir = FindObjectOfType<InTheAir>();
     }
 
@@ -20,6 +23,11 @@ public class ScoreKeeper : MonoBehaviour
     void Update()
     {
         scoreText.text = "Score:" + System.Convert.ToString(inTheAir.jumpCounter);
+        highScoreText.text = "HighScore:" + System.Convert.ToString(highScoreKeeper);
+
+        if(inTheAir.jumpCounter > highScoreKeeper){
+            highScoreKeeper = inTheAir.jumpCounter; 
+        }
 
         if(inTheAir.jumpCounter < 0){
             //gameover
