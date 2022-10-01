@@ -28,5 +28,18 @@ public class ManController : MonoBehaviour
             isJumping = false; 
         }
 
+        if(Input.touchCount > 0){
+            Touch touch = Input.GetTouch(0);
+            if(touch.phase == TouchPhase.Began){
+                manAnim.SetBool("isJumping", true);
+                isJumping = true; 
+                AudioSource.PlayClipAtPoint(jumpSound,new Vector3(-7f,3f,0f));
+            }
+            if(touch.phase == TouchPhase.Ended){
+                manAnim.SetBool("isJumping", false);
+                isJumping = false; 
+            }
+        }
+
     }
 }
