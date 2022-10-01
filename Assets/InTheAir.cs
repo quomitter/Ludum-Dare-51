@@ -26,7 +26,12 @@ public class InTheAir : MonoBehaviour
         if(ropeOnGround && manController.isJumping){
             //made jump
             Debug.Log("made jump");
-            jumpCounter = jumpCounter + 1; 
+            jumpCounter = jumpCounter + 10; 
+        }
+            if(!ropeOnGround && manController.isJumping){
+            //made jump
+            Debug.Log("made jump");
+            jumpCounter = jumpCounter - 1; 
         }
     }
 }
